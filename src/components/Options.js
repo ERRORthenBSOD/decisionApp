@@ -16,7 +16,7 @@ const Options = (props)=>(
                 >Удалить всё
                 </button>
             </div>
-            {props.options.length === 0 && <p className='widget__message'> Add an option to get started!</p>}
+            {props.options.length === 0 && <p className='widget__message'> Добавь занятие, чтобы начать</p>}
             {props.options.map((option, index)=>(
                     <Option
                         count={index+1}
