@@ -1,9 +1,16 @@
 const path = require('path');
+const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // const distPath = path.join(__dirname,'dist', 'public');
 
-module.exports =(env)=>{
+if (process.env.NODE_ENV === 'test') {
+    require('dotenv').config({ path: '.env.test' });
+} else if (process.env.NODE_ENV === 'development') {
+    require('dotenv').config({ path: '.env.development' });
+}
+
+module.exports = (env) => {
     const isProduction = env === 'production';
     const CSSExtract = new ExtractTextPlugin('styles.css');
 
@@ -38,13 +45,13 @@ module.exports =(env)=>{
               })
           }]
       },
-      plugins: [CSSExtract],
+      plugins: [
+          CSSExtract
+      ],
       devtool: isProduction ? 'source-map' : 'inline-source-map',
-  // devtool: 'cheap-module-eval-source-map',
-    devServer: {
-        contentBase: path.join(__dirname, 'public'),
-        historyApiFallback: true,
-        publicPath: '/dist/'
+      devServer: {
+          contentBase: path.join(__dirname, 'public'),
+          historyApiFallback: true
     }
 }
 };
