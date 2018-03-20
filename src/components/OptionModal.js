@@ -13,14 +13,14 @@ const OptionModal = (props)=>(
             <h3
                 className='modal__title'
             >
-                Selected Option
+                Ваш выбор
             </h3>
             {props.selectedOption && <p className='modal__body'>{props.selectedOption}</p>}
             <button
                 className='button'
                 onClick={props.handleResetOption}
             >
-                Погнали
+                За дело
             </button>
         </Modal>
 );
